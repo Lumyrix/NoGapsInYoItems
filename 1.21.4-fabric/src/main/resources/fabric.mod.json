@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "nogapsinyoitems",
+  "version": "${version}",
+  "name": "No Gaps In Yo Items",
+  "description": "Removes visual gaps from generated item models.",
+  "authors": ["LumyNova"],
+  "license": "All-Rights-Reserved",
+  "environment": "client",
+  "mixins": [
+    "nogapsinyoitems.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": "=1.21.4",
+    "java": ">=21"
+  }
+}

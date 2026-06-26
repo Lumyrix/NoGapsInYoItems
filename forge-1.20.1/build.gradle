@@ -1,0 +1,48 @@
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'net.minecraftforge.gradle' version '6.0.+'
+    id 'org.spongepowered.mixin' version '0.7.+'
+}
+
+version = '1.0.1'
+group = 'dev.lumynova.nogapsinyoitems'
+archivesBaseName = 'NoGapsInYoItems-forge-1.20.1'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+mixin {
+    add sourceSets.main, 'nogapsinyoitems.mixins.refmap.json'
+    config 'nogapsinyoitems.mixins.json'
+}
+
+processResources {
+    filesMatching('META-INF/mods.toml') { expand project.properties }
+    from(sourceSets.main.resources.srcDirs) {
+        include '**/*'
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    }
+}
+
+jar {
+    manifest {
+        attributes([
+            "Specification-Title": "NoGapsInYoItems",
+            "Implementation-Title": project.name,
+            "Implementation-Version": project.version,
+        ])
+    }
+}

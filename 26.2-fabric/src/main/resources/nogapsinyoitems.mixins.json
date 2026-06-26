@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.lumynova.nogapsinyoitems.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ItemModelGeneratorMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}

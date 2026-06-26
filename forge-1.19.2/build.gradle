@@ -1,0 +1,41 @@
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'net.minecraftforge.gradle' version '6.0.+'
+}
+
+version = '1.0.1-forge-1.19.2'
+group = 'dev.lumynova.nogapsinyoitems'
+archivesBaseName = 'NoGapsInYoItems-forge-1.19.2'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'official', version: '1.19.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.19.2-43.3.0'
+}
+
+processResources {
+    filesMatching('META-INF/mods.toml') { expand project.properties }
+    from(sourceSets.main.resources.srcDirs) {
+        include '**/*'
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    }
+}
+
+jar {
+    manifest {
+        attributes([
+            "Specification-Title": "NoGapsInYoItems",
+            "Implementation-Title": project.name,
+            "Implementation-Version": project.version,
+        ])
+    }
+}

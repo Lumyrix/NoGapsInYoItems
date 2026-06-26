@@ -1,0 +1,13 @@
+allprojects {
+    repositories {
+        maven { url = 'https://maven.fabricmc.net/' }
+        mavenCentral()
+        maven { url = 'https://maven.terraformersmc.com/releases/' }
+        maven { url = 'https://maven.shedaniel.me/' }
+    }
+}
+
+tasks.register('buildAll') {
+    def leafProjects = subprojects.findAll { it.childProjects.isEmpty() }
+    dependsOn(leafProjects.collect { it.tasks.named('build') })
+}

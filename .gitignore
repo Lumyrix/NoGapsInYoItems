@@ -1,0 +1,13 @@
+.gradle/
+build/
+out/
+run/
+*.iml
+*.ipr
+*.iws
+.idea/
+.jdks/
+*.jar
+.jdks/
+*.jar
+.codex
